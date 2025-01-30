@@ -29,23 +29,16 @@
 
     <div class="flex items-center justify-between space-x-4">
       <div class="relative flex-1">
-        <input type="text" placeholder="Search for a city..."
-          class="w-full p-3 pl-12 pr-6 text-gray-800 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300" />
+        <input id="city-input" type="text" placeholder="Search for a city..."
+          class="w-full p-3 pl-12 pr-16 text-gray-800 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
+          autocomplete="off" />
         <span
           class="material-icons w-5 h-5 absolute top-1/2 left-4 transform -translate-y-1/2 text-teal-600">search</span>
 
         <!-- recently searched item -->
-        <div class="recent absolute w-full mt-2 bg-white rounded-lg shadow-md p-4 space-y-2 hidden">
-          <ul>
-            <li class="text-gray-800 hover:bg-gray-100 p-2 rounded-md cursor-pointer">
-              New York
-            </li>
-            <li class="text-gray-800 hover:bg-gray-100 p-2 rounded-md cursor-pointer">
-              Los Angeles
-            </li>
-            <li class="text-gray-800 hover:bg-gray-100 p-2 rounded-md cursor-pointer">
-              Chicago
-            </li>
+        <div class="absolute w-full mt-2 bg-white rounded-lg shadow-md p-4 space-y-2 z-10 hidden">
+          <ul id="search-history">
+            <!-- Recently Searched Items will appear here -->
           </ul>
         </div>
       </div>
@@ -55,75 +48,25 @@
     </div>
   </header>
 
-
   <!-- ////////////////////////////////////////// main Section of the page ///////////////////////////////////////////////////////// -->
 
-
   <main class="bg-lime-200 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-2">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl font-bold">New Delhi, India</h2>
-      <p class="text-sm text-gray-600">
-        Region: New Delhi | Time: 5:06 AM (IST +5:30)
-      </p>
-      <p class="text-xs text-gray-400">Lat: 40.714 | Lon: -74.006</p>
+    <div id="main-header" class="text-center mb-6">
+      <!-- Weather Info will appear here -->
     </div>
-
     <div
       class="flex flex-col lg:flex-row justify-center items-center bg-gradient-to-b from-lime-100 to-lime-50 text-black p-6 rounded-lg shadow-lg mx-auto mb-4">
-      <!-- Left Section: Weather Icon and Main Info -->
-      <div class="flex items-center mb-4 lg:mb-0 lg:mr-6">
-        <!-- Weather Icon -->
-        <img src="https://openweathermap.org/img/wn/50n@2x.png" alt="Sunny Intervals"
-          class="animate-pulse w-24 h-24 lg:w-32 lg:h-32" />
+      <!-- Weather Icon and Main Info -->
+      <div id="main-body" class="flex items-center mb-4 lg:mb-0 lg:mr-6">
         <!-- Weather Info -->
-        <div class="ml-4 text-left">
-          <div class="text-6xl mb-2">28°</div>
-          <p class="text-lg text-gray-700">Feels like 30&deg; C</p>
-          <p class="text-lg text-gray-800">Mostly cloudy</p>
-          <p class="text-sm text-gray-700">High: 32&deg;C | Low: 28&deg;C</p>
-        </div>
       </div>
     </div>
-
-    <div class="bg-lime-200 grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-
-      <div class="bg-teal-50 p-6 rounded-lg shadow-md flex items-center justify-center space-x-2">
-        <span class="material-icons text-teal-500">water_drop</span>
-        <div>
-          <p class="font-medium">Humidity</p>
-          <p class="text-gray-700">45%</p>
-        </div>
-      </div>
-
-      <div class="bg-teal-50 p-6 rounded-lg shadow-md flex items-center justify-center space-x-2">
-        <span class="material-icons text-teal-500">air</span>
-        <div>
-          <p class="font-medium">Wind</p>
-          <p class="text-gray-700">12 km/h NE</p>
-        </div>
-      </div>
-
-      <div class="bg-teal-50 p-6 rounded-lg shadow-md flex items-center justify-center space-x-2">
-        <span class="material-icons text-teal-500">battery_full</span>
-        <div>
-          <p class="font-medium">Pressure</p>
-          <p class="text-gray-700">1021 hPa</p>
-        </div>
-      </div>
-
-      <div class="bg-teal-50 p-6 rounded-lg shadow-md flex items-center justify-center space-x-2">
-        <span class="material-icons text-teal-500">pool</span>
-        <div>
-          <p class="font-medium">Sea Level</p>
-          <p class="text-gray-700">1024</p>
-        </div>
-      </div>
+    <div id="main-footer" class="bg-lime-200 grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+      <!-- Weather Info -->
     </div>
   </main>
 
-
   <!-- /////////////////////////////////////////////// Hourly Forecast /////////////////////////////////////////////////////////////-->
-
 
   <section
     class="bg-gradient-to-b from-lime-100 to-lime-50 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-4">
@@ -131,60 +74,13 @@
       <h2 class="text-2xl font-bold">Hourly Forecast</h2>
     </div>
 
-    <!-- mini hourly cards -->
-    <div class="flex overflow-x-auto py-4 space-x-2 md:justify-center">
-      <div
-        class="bg-gradient-to-b from-teal-100 to-teal-50 p-4 rounded-lg shadow-md flex flex-col items-center min-w-[100px]">
-        <p class="font-medium">6 AM</p>
-        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Sunny" class="w-10 h-10 my-1" />
-        <p class="text-gray-700">8°C</p>
-        <p class="text-xs text-gray-500">cloudy</p>
-      </div>
-
-      <!-- mini hourly cards -->
-      <div
-        class="bg-gradient-to-b from-teal-100 to-teal-50 p-4 rounded-lg shadow-md flex flex-col items-center min-w-[100px]">
-        <p class="font-medium">9 AM</p>
-        <img src="https://openweathermap.org/img/wn/13d@2x.png" alt="Sunny" class="w-10 h-10 my-1" />
-        <p class="text-gray-700">10°C</p>
-        <p class="text-xs text-gray-500">cloudy</p>
-      </div>
-
-      <!-- mini hourly cards -->
-      <div
-        class="bg-gradient-to-b from-teal-100 to-teal-50 p-4 rounded-lg shadow-md flex flex-col items-center min-w-[100px]">
-        <p class="font-medium">12 PM</p>
-        <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="Sunny" class="w-10 h-10 my-1" />
-        <p class="text-gray-700">12°C</p>
-        <p class="text-xs text-gray-500">cloudy</p>
-      </div>
-
-      <!-- mini hourly cards -->
-      <div
-        class="bg-gradient-to-b from-teal-100 to-teal-50 p-4 rounded-lg shadow-md flex flex-col items-center min-w-[100px]">
-        <p class="font-medium">3 PM</p>
-        <img src="https://openweathermap.org/img/wn/02d@2x.png
-          " alt="Sunny" class="w-10 h-10 my-1" />
-        <p class="text-gray-700">14°C</p>
-        <p class="text-xs text-gray-500">cloudy</p>
-      </div>
-
-      <!-- mini hourly cards -->
-      <div
-        class="bg-gradient-to-b from-teal-100 to-teal-50 p-4 rounded-lg shadow-md flex flex-col items-center min-w-[100px]">
-        <p class="font-medium">6 PM</p>
-        <img src="https://openweathermap.org/img/wn/02d@2x.png
-          " alt="Sunny" class="w-10 h-10 my-1" />
-        <p class="text-gray-700">11°C</p>
-        <p class="text-xs text-gray-500">cloudy</p>
-      </div>
-
+    <!-- Hourly Forecast -->
+    <div id="hourly-forecast" class="flex overflow-x-auto scroll-smooth py-4 space-x-2 md:justify-normal">
+      <!-- Mini Hourly Card will appear here-->
     </div>
   </section>
 
-
   <!-- ////////////////////////////////////////////// daily forecast data //////////////////////////////////////////////////////// -->
-
 
   <section
     class="bg-gradient-to-b from-lime-100 to-lime-50 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-4">
@@ -194,220 +90,11 @@
     </div>
 
     <!-- Forecast Container -->
-    <div class="flex flex-row overflow-x-auto overflow-hidden scroll-smooth">
-      <!-- Forecast Card -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 m-1 mb-2">
-        <!-- Top Section: Date and Icon -->
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">Today</p>
-            <p class="text-sm text-gray-600">Jan 22, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/11d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-
-        <!-- Middle Section: Temperature Details -->
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">27°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">15°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-
-        </div>
-
-        <!-- Bottom Section: Additional Info -->
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 45%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 15 km/h NE</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Repeat similar cards for other days -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 mx-1 mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">tomorrow</p>
-            <p class="text-sm text-gray-600">Jan 23, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">30°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">18°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 35%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 10 km/h SW</p>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat similar cards for other days -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 mx-1 mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">wednesday</p>
-            <p class="text-sm text-gray-600">Jan 23, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">30°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">18°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 35%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 10 km/h SW</p>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat similar cards for other days -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 mx-1 mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">thursday</p>
-            <p class="text-sm text-gray-600">Jan 23, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">30°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">18°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 35%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 10 km/h SW</p>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat similar cards for other days -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 mx-1 mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">friday</p>
-            <p class="text-sm text-gray-600">Jan 23, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">30°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">18°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 35%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 10 km/h SW</p>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat similar cards for other days -->
-      <div class="flex flex-col bg-gradient-to-r from-teal-100 to-teal-50 p-4 rounded-xl shadow-md min-w-80 mx-1 mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">saturday</p>
-            <p class="text-sm text-gray-600">Jan 23, 2025</p>
-          </div>
-          <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon" class="w-14 h-14" />
-        </div>
-        <div class="flex justify-between items-center border-t pt-2">
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">High</p>
-            <p class="text-lg font-bold text-gray-800">30°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Low</p>
-            <p class="text-lg font-bold text-gray-800">18°C</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-semibold text-teal-600">Feels Like</p>
-            <p class="text-lg font-bold text-gray-800">25°C</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-t pt-2 mt-2 text-sm">
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">water_drop</span>
-            <p>Humidity: 35%</p>
-          </div>
-          <div class="flex items-center">
-            <span class="material-icons text-teal-500 mr-1">air</span>
-            <p>Wind: 10 km/h SW</p>
-          </div>
-        </div>
-      </div>
+    <div id="daily-forecast" class="flex flex-row overflow-x-auto overflow-hidden scroll-smooth">
+      <!-- Forecast Card will appear here-->
     </div>
   </section>
+  <script src="./src/scripts/main.js"></script>
 </body>
 
 </html>
