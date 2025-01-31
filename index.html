@@ -20,7 +20,11 @@
 
 </head>
 
+<!-- ///////////////////////////////////////////////// Body Section ///////////////////////////////////////////////////////////// -->
+
 <body class="custom bg-gradient-to-br from-blue-100 to-teal-100 m-2 font-sans">
+
+  <!-- //////////////////////////////////////////////// Header Section /////////////////////////////////////////////////////////// -->
   <header class="bg-gradient-to-r from-teal-300 to-blue-500 text-white p-6 shadow-xl rounded-xl max-w-4xl mx-auto">
     <div class="text-center mb-2">
       <h1 class="text-3xl tracking-widest">CloudCompass</h1>
@@ -48,8 +52,7 @@
     </div>
   </header>
 
-  <!-- ////////////////////////////////////////// main Section of the page ///////////////////////////////////////////////////////// -->
-
+  <!-- //////////////////////////////////////////////// Main Section ///////////////////////////////////////////////////////////// -->
   <main class="bg-lime-200 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-2">
     <div id="main-header" class="text-center mb-6">
       <!-- Weather Info will appear here -->
@@ -66,8 +69,7 @@
     </div>
   </main>
 
-  <!-- /////////////////////////////////////////////// Hourly Forecast /////////////////////////////////////////////////////////////-->
-
+  <!-- /////////////////////////////////////////////// Hourly Forecast ///////////////////////////////////////////////////////////-->
   <section
     class="bg-gradient-to-b from-lime-100 to-lime-50 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-4">
     <div class="text-center">
@@ -81,7 +83,6 @@
   </section>
 
   <!-- ////////////////////////////////////////////// daily forecast data //////////////////////////////////////////////////////// -->
-
   <section
     class="bg-gradient-to-b from-lime-100 to-lime-50 text-gray-800 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto mt-4">
     <!-- Section Header -->
@@ -94,6 +95,16 @@
       <!-- Forecast Card will appear here-->
     </div>
   </section>
+
+  <!-- //////////////////////////////////////////////// Footer Section /////////////////////////////////////////////////////////// -->
+  <footer class="bg-gradient-to-r from-blue-400 to-teal-500 text-white p-6 shadow-xl rounded-xl max-w-4xl mx-auto mt-2">
+    <div class="text-center">
+      <p class="text-white">Crafted with <span class="text-red-500">&hearts;</span> in India 🇮🇳 | Weather data by
+        OpenWeatherMap
+      </p>
+    </div>
+  </footer>
+  <div id="loader" class="loader"></div>
   <script src="./src/scripts/main.js"></script>
 </body>
 

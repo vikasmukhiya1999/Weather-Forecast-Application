@@ -1,15 +1,24 @@
+// api key and base url
 const API_KEY = "2311494df380589310eb6d56646ec070";
 const baseURL = `https://api.openweathermap.org/data/2.5/forecast?`;
 
+// Search History array using Local Storage
 const STORAGE_KEY = "searchHistory";
 let searchHistory = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
+// DOM Elements
 const cityInput = document.getElementById("city-input");
 const myLocation = document.getElementById("my-location");
 const DisplaySearchHistory = document.getElementById("search-history");
 
+// Event Listeners
 cityInput.addEventListener("change", (e) => {
-  const cityName = e.target.value;
+  const cityName = e.target.value.trim();
+  if (!/^[\D]+$/.test(cityName)) {
+    alert("City name should only contain letters.");
+    cityInput.value = "";
+    return false;
+  }
   if (cityInput) {
     fetchData(`${baseURL}q=${cityName}&units=metric&appid=${API_KEY}`);
     cityInput.value = "";
@@ -17,12 +26,14 @@ cityInput.addEventListener("change", (e) => {
   }
 });
 
+// Display search history when input is clicked
 cityInput.addEventListener("click", () => {
   if (searchHistory.length > 1) {
     DisplaySearchHistory.parentElement.classList.remove("hidden");
   }
 });
 
+// Display search history when input is focused
 cityInput.addEventListener("focus", () => {
   if (searchHistory.length > 1) {
     DisplaySearchHistory.innerHTML = "";
@@ -43,6 +54,7 @@ cityInput.addEventListener("focus", () => {
   }
 });
 
+// Hide search history when input is blurred
 cityInput.addEventListener("blur", () => {
   setTimeout(() => {
     DisplaySearchHistory.innerHTML = "";
@@ -50,10 +62,12 @@ cityInput.addEventListener("blur", () => {
   }, 100);
 });
 
+// Get weather data for current location
 myLocation.addEventListener("click", () => {
   getLocationWeather();
 });
 
+// Function to get location using lacation API
 const getLocationWeather = () => {
   navigator.geolocation.getCurrentPosition((position) => {
     const lat = position.coords.latitude;
@@ -62,31 +76,38 @@ const getLocationWeather = () => {
   });
 };
 
+// Function to fetch data from the API
 const fetchData = async (url) => {
+  const loader = document.getElementById("loader");
+  const mainHeader = document.getElementById("main-header");
+  const mainBody = document.getElementById("main-body");
+  const mainFooter = document.getElementById("main-footer");
+  const hourlyForecast = document.getElementById("hourly-forecast");
+  const dailyForecast = document.getElementById("daily-forecast");
+
+  mainHeader.innerHTML = "";
+  mainBody.innerHTML = "";
+  mainFooter.innerHTML = "";
+  hourlyForecast.innerHTML = "";
+  dailyForecast.innerHTML = "";
+  loader.style.display = "block";
   try {
     const response = await fetch(url);
     const weatherData = await response.json();
-    displayWeatherData(weatherData);
+    setTimeout(() => {
+      displayWeatherData(weatherData);
+    }, 400);
   } catch (error) {
-    console.error(error);
     console.log(error.message);
-    alert("City not found. Please enter a valid city name.");
+    loader.style.display = "none";
+    alert("error fetching data or incorrect city input. please try again.");
+  } finally {
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 400);
   }
 };
-
-const saveHistyory = (cityName) => {
-  if (!searchHistory.includes(cityName)) {
-    if (searchHistory.length > 4) {
-      searchHistory.pop();
-      searchHistory.unshift(cityName);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(searchHistory));
-    } else {
-      searchHistory.unshift(cityName);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(searchHistory));
-    }
-  }
-};
-
+// Function to display weather data on the UI
 const displayWeatherData = (data) => {
   const optionsDay = { weekday: "short" }; // Full day name (e.g., "Tuesday")
   const optionsDate = { day: "numeric" }; // Day of the month (e.g., "28")
@@ -263,7 +284,21 @@ const displayWeatherData = (data) => {
   saveHistyory(data.city.name);
 };
 
-// IIFE for first time location fetching //
+// Function to save search history in local storage
+const saveHistyory = (cityName) => {
+  if (!searchHistory.includes(cityName)) {
+    if (searchHistory.length > 4) {
+      searchHistory.pop();
+      searchHistory.unshift(cityName);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(searchHistory));
+    } else {
+      searchHistory.unshift(cityName);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(searchHistory));
+    }
+  }
+};
+
+// IIFE for first time location fetching on page load
 (() => {
   navigator.geolocation.getCurrentPosition((position) => {
     const lat = position.coords.latitude;
