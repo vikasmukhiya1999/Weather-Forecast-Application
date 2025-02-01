@@ -19,7 +19,15 @@ Weather-Forecast-Application/
 ├── tailwind.config.js
 ```
 
-### Codebase Overview
+### Installation & Usage
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/vikasmukhiya1999/Weather-Forecast-Application.git
+   ```
+2. Open `index.html` in a browser.
+3. check weather by using cityname OR location button.
+
+#### Codebase Overview
 
 - **index.html**: The main HTML file that structures the web application.
 - **src/scripts/main.js**: Contains the JavaScript code for fetching weather data from the OpenWeatherMap API and updating the UI.
@@ -46,3 +54,7 @@ This application provides real-time weather forecasts for any city. Users can se
 - **Real-Time Updates**: Ensure that weather data is updated in real-time to provide the most accurate information.
 - **Scalability**: Design the application to handle a growing number of users and data sources efficiently.
 - **Security**: Implement security best practices to protect user data and ensure the integrity of the application.
+
+
+## Live Demo
+[Live Hosted Link](https://weather947-app.netlify.app/)

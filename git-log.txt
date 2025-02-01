@@ -1,0 +1,38 @@
+(END)...skipping...
+commit 77ced75d8d4621791f54a4df074c6ee37ac5abee (HEAD -> main, origin/main, origin/HEAD)
+Author: VIKAS <vikasmukhiya1999@gmail.com>
+Date:   Fri Jan 31 21:33:40 2025 +0530
+
+    some final touches and comment added
+
+commit 436147b51d5e36543e1b0c18f98e0a41ed6291a6
+Author: VIKAS <vikasmukhiya1999@gmail.com>
+Date:   Thu Jan 30 18:18:26 2025 +0530
+
+    added JS functionality, readme update and some design changes.
+
+commit 6b89b1daf54e9e4629039da28688498981aba15a
+Author: VIKAS <vikasmukhiya1999@gmail.com>
+Date:   Tue Jan 21 15:57:04 2025 +0530
+
+    Design complete
+
+commit c40999c565ee6679e2ad2a31611b137ffac5d23f
+Author: VIKAS <vikasmukhiya1999@gmail.com>
+Date:   Tue Jan 14 17:01:18 2025 +0530
+
+    Weather Forecast Application project created
+
+commit 806bc999efef7ec9f7b74490b3e30745a88474c6
+Author: VIKAS <59020990+vikasmukhiya1999@users.noreply.github.com>
+Date:   Tue Jan 14 16:48:08 2025 +0530
+
+    Initial commit
+~
+~
+~
+~
+~
+~
+~
+(END)
